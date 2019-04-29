@@ -18,8 +18,10 @@ public class DbOperations {
 
     public void createRow(){
         ContentValues values = new ContentValues();
-        values.put("title","my title");
-        values.put("details","my details");
+        for(int i=0;i<10;i++) {
+            values.put("title", "my title"+i);
+            values.put("details", "my details"+i);
+        }
 
         database.insert("tasks",null,values);
     }
@@ -37,4 +39,11 @@ public class DbOperations {
         return title+"\n"+details;
 
     }
-}
+    public Cursor readRows(){
+        return database.query("tasks",null,null,null
+                ,null,null,null);
+    }
+
+
+
+    }

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHelper extends SQLiteOpenHelper {
 
     static final String DATABASE_CREATE = "create table "+"tasks"+
-            "( " +"ID"+" integer primary key autoincrement,"+ "title  text,details text); ";
+            "( " +"_id"+" integer primary key autoincrement,"+ "title  text,details text); ";
 
     public DbHelper(Context context) {
         super(context, "tasks", null, 1);
