@@ -2,6 +2,7 @@ package com.example.database;
 
 import android.database.Cursor;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CursorAdapter;
@@ -22,12 +23,18 @@ public class SmsContentProviderActivity extends AppCompatActivity {
         //uri - content://sms/inbox
         Uri uriSms = Uri.parse("content://sms/inbox");
         //projection -- columns,   selection -- selecting rows
-        Cursor cursor = getContentResolver().query(uriSms,//table name
+        Cursor cursor = getContentResolver().query(
+                ContactsContract.Contacts.CONTENT_URI,
+                //uriSms,//table name
                 null,null,null,null);
         CursorAdapter adapter = new SimpleCursorAdapter(this,
-                android.R.layout.simple_list_item_2,cursor,
-                new String[]{"body","address"},
-                new int[]{android.R.id.text1,android.R.id.text2},0);
+                android.R.layout.simple_list_item_1,
+                cursor,
+                new String[]{ContactsContract.Contacts.DISPLAY_NAME},
+                        //"body","address"},
+                new int[]{android.R.id.text1},
+                        //,android.R.id.text2}
+                        0);
         inboxListView.setAdapter(adapter);
         //content resolver -- client app [database]
         //content provider -- server app [sms app]
