@@ -21,9 +21,10 @@ public class DbOperations {
         for(int i=0;i<10;i++) {
             values.put("title", "my title"+i);
             values.put("details", "my details"+i);
+            database.insert("tasks",null,values);
+
         }
 
-        database.insert("tasks",null,values);
     }
 
     public String readRow(){
