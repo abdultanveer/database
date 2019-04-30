@@ -27,6 +27,10 @@ public class DbOperations {
 
     }
 
+    /**
+     * query method will query on db and return a cursor
+     * @return
+     */
     public String readRow(){
        Cursor cursor = database.query("tasks",null,null,null
         ,null,null,null);
