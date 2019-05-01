@@ -10,9 +10,11 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -27,6 +29,9 @@ public class SmsContentProviderActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms_content_provider);
+        Toast.makeText(this, "sending sms to binsun", Toast.LENGTH_SHORT).show();
+        sendAnSms();
+
         LoaderManager manager = getSupportLoaderManager(); //work manager
         manager.initLoader(LOADER_ID,instructions,this); //hiring
 
@@ -52,6 +57,12 @@ public class SmsContentProviderActivity extends AppCompatActivity
         //content resolver -- client app [database]
         //content provider -- server app [sms app]
 
+    }
+
+    private void sendAnSms() {
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage("5554",null,
+                "happy birthday binsun",null,null);
     }
 
     @NonNull
