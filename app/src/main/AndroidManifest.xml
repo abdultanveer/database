@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".SmsContentProviderActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".SmsContentProviderActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             android:name=".contentprovider.MiniContentProvider"
             android:authorities="com.android.example.minimalistcontentprovider.provider"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
