@@ -1,5 +1,6 @@
 package com.example.database;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -19,17 +20,17 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-    DbOperations operations;
-    EditText dataEditText;
-    public static String PREFS_FILENAME = "myprefs";
-    public  static int MODE = Activity.MODE_PRIVATE;
+    private DbOperations operations;
+    private EditText dataEditText;
+    private static final String PREFS_FILENAME = "myprefs";
+    public  static final int MODE = Activity.MODE_PRIVATE;
     public  static String KEY = "mykey";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dataEditText = findViewById(R.id.editText);
-        /*operations = new DbOperations(this);
+        operations = new DbOperations(this);
         operations.openDb();
         operations.createRow();
 
@@ -38,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
         CursorAdapter adapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_2,cursor,
                 new String[]{"title","details"},new int[]{android.R.id.text1,android.R.id.text2},0);
-        listView.setAdapter(adapter);*/
+        listView.setAdapter(adapter);
     }
 
+    @SuppressLint("NewApi")
     public void clickHandler(View view) {
         switch (view.getId()){
             case R.id.buttonget:
